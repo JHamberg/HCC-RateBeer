@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+- 2.0.0
+script:
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
+deploy:
+  provider: heroku
+  api_key:
+    secure: ekPa0eD1INLUUfkYn36VgTAR6CLU0b3QJ5Z9lNKXyLNGOtURdXkiGr//VrsDe7FWaMr5Hk2ybH6aEWB9BxLxjuZcgD+MXxE5yaZuaqJYXQ1riF8irPc0vOih2DIo6cavB4DSEcr0dV67BbIJVawlRKQSKlTdjO1vPWk2L099xkM=
+  app: fathomless-earth-9456
+  on:
+    repo: JHamberg/Ratebeer
